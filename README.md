@@ -33,6 +33,46 @@ optional arguments:
 -u, --undistort       Whether to run the undistort function to undistort the
                         images.
 ```
-By default, this script will use the images stored at `data/left_undistort` to calibrate the camera.
+By default, this script will use the images stored at `data/left` to calibrate the camera.
 
 #### Stereo Camera Calibration
+Stereo camera calibration uses images captured from two different cameras to calibrate the two cameras and get the transformation from the first camera's coordinates to the second one. To use this utility, you can run `stereo_cal.py` as following:
+
+```bash
+python stereo_cal.py [-h] [-lp LEFT_PATH] [-rp RIGHT_PATH] [-lt LEFT_TARGET]
+                     [-rt RIGHT_TARGET] [-ct CHECKED_TARGET] [-r] [-s] [-c]
+```
+The details of the command line arguments are:
+```
+optional arguments:
+  -h, --help            show this help message and exit
+  -lp LEFT_PATH, --left_path LEFT_PATH
+                        Specify the directory where the images of left camera
+                        are stored.
+  -rp RIGHT_PATH, --right_path RIGHT_PATH
+                        Specify the directory where the images of right camera
+                        are stored.
+  -lt LEFT_TARGET, --left_target LEFT_TARGET
+                        Specify the directory where the rectified images of
+                        left camera will be stored. Note that only the flag
+                        '-r','--rectified' is set will the images be saved.
+  -rt RIGHT_TARGET, --right_target RIGHT_TARGET
+                        Specify the directory where the rectified images of
+                        right camera will be stored. Note that only the flag
+                        '-r','--rectified' is set will the images be saved.
+  -ct CHECKED_TARGET, --checked_target CHECKED_TARGET
+                        Specify the directory where the rectified images in
+                        pair will be stored. Note that only the flag '-r','--
+                        rectified' and '-c','--check' are set will the images
+                        be saved.
+  -r, --rectified       Whether to run the rectify function to rectify the
+                        images.
+  -s, --show            Whether to show the rectified images. Note that only
+                        the flag '-r','--rectified' is set will the images be
+                        shown.
+  -c, --check           Whether to visualize the results of rectified images
+                        in pair.
+```
+By default, this script will use the images stored at `data/left` and `data/right` to calibrate the cameras.
+
+#### Stereo Matching
